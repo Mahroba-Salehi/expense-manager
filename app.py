@@ -1,6 +1,6 @@
 from model.repository.database_manager import create_database
 from view.main_view import MainView
-from model.tools.logging import Logger
+from tools.logging import Logger
 
 Logger.info("App Started")
 
