@@ -12,3 +12,4 @@ class Logger:
     def warning(self, message):
         """Log a warning message with timestamp"""
         print(f"[WARNING] {datetime.datetime.now()} - {message}")
+
