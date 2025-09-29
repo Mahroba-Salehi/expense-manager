@@ -1,22 +1,31 @@
-from service.expense_service import ExpenseService
-from model.entity.expense import Expense
+import tkinter as tk
+from view.income_view import IncomeView
+from view.expense_view import ExpenseView
+from view.report_view import ReportView
 
-def menu():
-    service = ExpenseService()
+class MainView:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Expense Manager")
+        self.root.geometry("400x300")
 
-    while True:
-        print("\n1. Add Expense\n2. Show All\n3. Exit")
-        choice = input("Choose: ")
+        tk.Label(root, text="Expense Manager", font=("Helvetica", 16)).pack(pady=20)
 
-        if choice == "1":
-            amount = float(input("Amount: "))
-            category = input("Category: ")
-            desc = input("Description: ")
-            date = input("Date (YYYY-MM-DD): ")
-            exp = Expense(None, 1, amount, category, desc, date)
-            service.add_expense(exp)
-            print("Expense saved!")
-        elif choice == "2":
-            print(service.repo.find_all())
-        elif choice == "3":
-            break
+        tk.Button(root, text="Add Income", width=20, command=self.open_income).pack(pady=5)
+        tk.Button(root, text="Add Expense", width=20, command=self.open_expense).pack(pady=5)
+        tk.Button(root, text="Show Report", width=20, command=self.open_report).pack(pady=5)
+        tk.Button(root, text="Exit", width=20, command=root.quit).pack(pady=5)
+
+    def open_income(self):
+        IncomeView(self.root)
+
+    def open_expense(self):
+        ExpenseView(self.root)
+
+    def open_report(self):
+        ReportView(self.root)
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = MainView(root)
+    root.mainloop()

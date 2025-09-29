@@ -1,11 +1,12 @@
 from model.repository.database_manager import create_database
-from view.main_view import menu
+from view.main_view import MainView
+from model.tools.logging import Logger
 
-def main():
-    create_database()
+Logger.info("App Started")
 
-    menu()
+# Create database if not exists
+create_database()
 
-if __name__ == "__main__":
-    main()
-
+# Start GUI
+ui = MainView()
+ui.run()
