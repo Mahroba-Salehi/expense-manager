@@ -1,17 +1,19 @@
-import datetime
+import logging
+import sys
 
-class Logger:
-    @staticmethod
-    def info(message):
-        """Log an info message with timestamp"""
-        print(f"[INFO] {datetime.datetime.now()} - {message}")
 
-    @staticmethod
-    def error(message):
-        """Log an error message with timestamp"""
-        print(f"[ERROR] {datetime.datetime.now()} - {message}")
+class Logger(logging.Logger):
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        encoding='utf-8',
+        handlers=[logging.StreamHandler(sys.stdout)],
+    )
 
-    @staticmethod
-    def warning(message):
-        """Log a warning message with timestamp"""
-        print(f"[WARNING] {datetime.datetime.now()} - {message}")
+    @classmethod
+    def info(cls, message):
+        logging.info(message)
+
+    @classmethod
+    def error(cls, message):
+        logging.error(message)

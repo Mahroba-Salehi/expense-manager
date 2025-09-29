@@ -1,3 +1,4 @@
+from model.entity import *
 from tools.logging import Logger
 
-Logger.info("App Started")
+Logger.info("Application started")
