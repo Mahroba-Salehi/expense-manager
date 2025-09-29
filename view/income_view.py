@@ -35,3 +35,6 @@ class IncomeView:
             self.window.destroy()
         except Exception as e:
             messagebox.showerror("Error", str(e))
+
+            self.reset_form()
+            self.window.mainloop()

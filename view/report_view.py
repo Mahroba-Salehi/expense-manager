@@ -32,3 +32,6 @@ class ReportView:
         tk.Label(self.window, text="--- Expense Details ---").pack()
         for exp in expenses:
             tk.Label(self.window, text=f"{exp[3]} | {exp[2]} | {exp[4]}").pack()
+
+            self.reset_form()
+            self.window.mainloop()
